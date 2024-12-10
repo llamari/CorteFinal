@@ -1,149 +1,130 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import './style.css';
+import { Link } from "react-router-dom";
+import { FaHeart, FaTrashAlt } from "react-icons/fa";
 
-const app = express();  // Apenas uma instância do express
+function Listas() {
+    const [listas, setListas] = useState([]);
+    const [nomeLista, setNomeLista] = useState('');  // Para controlar o input do nome da lista
+    const [filmes, setFilmes] = useState([]); // Para armazenar os filmes do backend
 
-// Middleware
-app.use(express.json());
-app.use(cors());
+    // Função para buscar as listas do backend
+    const fetchListas = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/listas'); // Endpoint do backend
+            setListas(response.data); // Atualiza o estado com as listas retornadas
+        } catch (error) {
+            console.error('Erro ao buscar listas:', error);
+        }
+    };
 
-// Conexão com o MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => {
-  console.log('MongoDB conectado');
-}).catch(err => console.error(err));
+    // Função para buscar filmes do backend
+    const fetchFilmes = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/filmes'); // Endpoint de filmes
+        setFilmes(response.data); // Atualiza o estado com os filmes retornados
+      } catch (error) {
+        console.error('Erro ao buscar filmes:', error);
+      }
+    };
+  
+    useEffect(() => {
+        fetchListas();
+        fetchFilmes();
+    }, []);
 
-// Modelo de Filme
-const FilmeSchema = new mongoose.Schema({
-  _id: Number,
-  titulo: String,
-  capa: String,
-  descricao: String,
-  nota: Number,
-  fav: Boolean,
-}, { collection: 'Filmes' }); // Nome exato da coleção
+    const criarLista = async (nome) => {
+        try {
+            const response = await axios.post('http://localhost:5000/api/listas', { nome: nome });
+            console.log('Lista criada:', response.data);
+            setNomeLista('');
+        } catch (error) {
+            console.error('Erro ao criar a lista:', error.message);
+        }
+    };
+      
+    const nome = (e) => {
+        setNomeLista(e.target.value);
+    };
 
-const Filmes = mongoose.model('Filme', FilmeSchema);
-
-// Rota de teste
-app.get('/', (req, res) => {
-  res.send('API funcionando!');
-});
-
-// Rota para buscar filmes
-app.get('/api/filmes', async (req, res) => {
-  const filmes = await Filmes.find();
-  res.json(filmes);
-});
-
-// Rota para alterar o status de favorito
-app.patch('/api/filmes/:id/fav', async (req, res) => {
-  const { id } = req.params;
-  const numericId = parseInt(id);
-
-  // Verificar se o ID é um número válido
-  if (isNaN(numericId)) {
-    return res.status(400).json({ message: 'ID inválido' });
-  }
-
-  try {
-    // Buscar o filme pelo ID
-    const movie = await Filmes.findById(numericId);
-
-    if (!movie) {
-      return res.status(404).json({ message: 'Filme não encontrado' });
+    const deletaLista = async (id) => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/api/listas/${id}/deletar`);
+            console.log('Lista deletada: ', response.data);
+            window.location.reload(false);
+        } catch (error) {
+            console.log("Erro ao deletar lista:", error);
+        }
     }
 
-    // Alternar o valor de "fav"
-    movie.fav = !movie.fav;
-    await movie.save();
-
-    res.json({ message: movie.fav ? "Favoritado" : "Desfavoritado", movie });
-  } catch (error) {
-    console.error('Erro ao atualizar favorito:', error.message);
-    res.status(500).json({ message: 'Erro interno do servidor' });
-  }
-});
-
-// Modelo de Lista
-const ListaSchema = new mongoose.Schema({
-  titulo: String,
-  filmes: [Number],
-}, { collection: 'Listas' }); // MongoDB gerenciará o _id automaticamente
-
-const Listas = mongoose.model('Lista', ListaSchema);
-
-// Rota para buscar listas
-app.get('/api/listas', async (req, res) => {
-  try {
-    const listas = await Listas.find(); // Correção aqui: use Listas.find()
-    res.json(listas);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao buscar listas' });
-  }
-});
-
-// Rota para criar lista
-// Rota para criar lista
-app.post('/api/listas', async (req, res) => {
-  try {
-    const { nome } = req.body;
-
-    if (!nome) {
-      return res.status(400).json({ error: 'O nome da lista é obrigatório' });
+    const deletaFilme = async (idLista, idFilme) => {
+        try {
+            // Agora estamos passando o ID do filme diretamente na URL
+            const response = await axios.delete(`http://localhost:5000/api/listas/${idLista}/deletar/filme/${idFilme}`);
+            console.log('Filme deletado: ', response.data);
+            window.location.reload(false);
+        } catch (error) {
+            console.log("Erro ao deletar filme:", error);
+        }
     }
 
-    const novaLista = new Listas({ titulo: nome, filmes: [] });
-    await novaLista.save(); // Chamada save única
+    return (
+        <div>
+            <form onSubmit={(e) => { criarLista(nomeLista); }} id="formulario">
+                <input 
+                    type="text" 
+                    placeholder="Nome da lista" 
+                    value={nomeLista} 
+                    onChange={nome}
+                    id="Nome" 
+                />
+                <button type="submit" id="adiciona">Adicionar</button>
+            </form>
 
-    res.status(201).json({
-      id: novaLista._id, // Incluindo o id gerado automaticamente pelo MongoDB
-      nome: novaLista.titulo,
-      filmes: novaLista.filmes,
-    });
-  } catch (error) {
-    console.error('Erro ao criar a lista:', error); // Exibir erro completo
-    res.status(500).json({ error: 'Erro ao criar a lista', details: error.message });
-  }
-});
+            <h2>Listas:</h2>
+            <ul id="ul">
+                {listas.map((lista) => (
+                    <li key={lista._id} className="List">
+                        <div className="infoo">
+                            <h2>{lista.titulo}</h2>
+                            <FaTrashAlt onClick={() => deletaLista(lista._id)} />    
+                        </div>
+                        
+                        {/* Chama a função fetchFilmes para pegar os filmes com base nos IDs */}
+                        <ul>
+                            {lista.filmes.map((filmeId) => {
+                                const filme = filmes.find((f) => f._id === filmeId);
+                                return (
+                                    filme ? (
+                                        <Link to={`/filmes/${filme._id}`} key={filme._id} className='ir'>
+                                            <li className='film'>
+                                                <h3 id='titulo'>{filme.titulo}</h3>
+                                                <div className="infoo">
+                                                    <p id='nota'><b>{filme.nota}/10</b></p>
 
+                                                    <div>
+                                                        {filme.fav ? (
+                                                            <FaHeart color="red" />
+                                                        ) : (
+                                                            <FaHeart color="grey" />
+                                                        )}
+                                                        <FaTrashAlt onClick={() => deletaFilme(lista._id, filme._id)} />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </Link>
+                                    ) : (
+                                        <li key={filmeId}>Filme não encontrado</li>
+                                    )
+                                );
+                            })}
+                        </ul>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
 
-// Rota para adicionar filme a lista
-app.patch('/api/listas/:id/adicionar', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { filmeId } = req.body;
-    
-    console.log(`Adicionando filme ${filmeId} à lista ${id}`); // Log para depurar
-    
-    const lista = await Listas.findById(id);
-    if (!lista) {
-      return res.status(404).json({ error: 'Lista não encontrada' });
-    }
-
-    const filme = await Filmes.findById(filmeId);
-    if (!filme) {
-      return res.status(404).json({ error: 'Filme não encontrado' });
-    }
-
-    if (!lista.filmes.includes(filmeId)) {
-      lista.filmes.push(filmeId);
-      await lista.save();
-    }
-
-    res.json(lista);
-  } catch (error) {
-    console.error('Erro ao adicionar filme na lista:', error.message);
-    res.status(500).json({ error: 'Erro ao adicionar filme na lista', details: error.message });
-  }
-});
-
-
-// Iniciar o servidor
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+export default Listas;
