@@ -1,0 +1,82 @@
+.info{
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    justify-content: center;
+    padding-top: 3rem;
+}
+
+
+#sinopse{
+    text-align: justify;
+}
+
+#note{
+    text-align: justify;
+}
+
+#title{
+    color: black;
+    text-align: center;
+    margin: 1rem 0 0 0;
+    padding: 0%;
+}
+
+.favorito{
+    background-color: pink;
+    border: solid rgb(255, 168, 183) 3px;
+    border-radius: 1.5rem;
+    height: 2.5rem;
+    width: 6rem;
+    cursor: pointer;
+}
+
+.favorito:hover{
+    background-color: rgb(240, 175, 186);
+    border: solid rgb(240, 146, 162) 3px;
+}
+
+.favoritar {
+    border: solid grey 3px;
+    border-radius: 1.5rem;
+    height: 2.5rem;
+    width: 6rem;
+    cursor: pointer;
+}
+/*popup
+/* Sobrepor a tela com um fundo semi-transparente */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garantir que o popup fique acima de outros elementos */
+}
+
+/* Estilo do conteúdo do popup */
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+
+.popup-content button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.popup-content button:hover {
+    background-color: #0056b3;
+}

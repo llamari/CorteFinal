@@ -1,0 +1,14 @@
+#ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.List {
+    background-color: rgb(167, 167, 167);
+    width: 25%;
+    min-height: 5rem;
+    border-radius: 15px;
+    margin: 1rem;
+    padding: 0rem 1rem 1rem 1rem;
+}
