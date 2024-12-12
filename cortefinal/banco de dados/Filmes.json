@@ -44,12 +44,12 @@
   "capa": "https://uploads.alternativanerd.com.br/wp-content/uploads/2023/11/AN_Como-Treinar-o-Seu-Dragao.jpg",
   "descricao": "Soluço é um jovem viking que vive em uma vila onde lutar contra dragões é um estilo de vida. Ao encontrar um Fúria da Noite, um dragão raro chamado Banguela, ele descobre que essas criaturas não são tão perigosas quanto parecem. Juntos, eles formam uma amizade improvável e desafiam tudo o que a vila acredita sobre dragões.",
   "nota": 8.1,
-  "fav": false
+  "fav": true
 },
 {
   "_id": 8,
   "titulo": "Wall-E",
-  "capa": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/9A115262450554620990F45242A2287B24E04EEF508B45BFF5C0318234048DA4/scale?width=440&aspectRatio=1.78&format=webp",
+  "capa": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/5C8D13FFDEA93C10069A51DDA07050A362726ADCA060AACEE5DACB61CD3F7891/scale?width=1200&aspectRatio=1.78&format=webp",
   "descricao": "Num futuro distante, a Terra foi abandonada devido à poluição e ao acúmulo de lixo. Wall-E, um robô solitário encarregado de limpar o planeta, passa seus dias compactando resíduos e sonhando com amor. Sua vida muda completamente quando conhece EVA, um robô de alta tecnologia que busca sinais de vida no planeta. Juntos, eles embarcam em uma jornada que pode salvar a humanidade.",
   "nota": 8.4,
   "fav": false
@@ -60,7 +60,7 @@
   "capa": "https://www.sescsp.org.br/wp-content/uploads/2024/11/de-volta-para-o-futuro-capa.jpg",
   "descricao": "Marty McFly, um adolescente comum, é acidentalmente enviado de volta ao ano de 1955 em uma máquina do tempo construída pelo excêntrico cientista Dr. Emmett Brown. Ao interferir nos eventos do passado, Marty precisa garantir que seus pais se apaixonem para não apagar sua própria existência e, ao mesmo tempo, encontrar uma forma de voltar para o futuro.",
   "nota": 8.5,
-  "fav": false
+  "fav": true
 },
 {
   "_id": 10,
@@ -81,7 +81,7 @@
 {
   "_id": 12,
   "titulo": "Mulher Maravilha",
-  "capa": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtQwO_IvdlSHSQH5qg1NMC00hrQGjp67YZfg&s",
+  "capa": "https://universosagas.ig.com.br/wp-content/uploads/2024/03/steve-trevor-and-wonder-woman-in-2017-s-wonder-woman.png",
   "descricao": "Diana, princesa das Amazonas, é treinada para ser uma guerreira imbatível. Quando um piloto cai na ilha em que vive e conta sobre uma guerra devastadora no mundo exterior, Diana deixa seu lar, convencida de que pode acabar com o conflito. Lutando lado a lado com os homens na Primeira Guerra Mundial, ela descobre seu verdadeiro poder e propósito.",
   "nota": 7.4,
   "fav": true
@@ -97,7 +97,7 @@
 {
   "_id": 14,
   "titulo": "Legalmente Loira",
-  "capa": "https://s2-techtudo.glbimg.com/MrkgwpE6537Z2yIt1SYRhRPMnOw=/0x0:1500x1000/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2023/z/M/mf0dnCRvKFEFWHSl2Xdw/pro2yf2uokih7pvnefq-o.jpg",
+  "capa": "https://rollingstone.com.br/media/uploads/reese-witherspoon-em-legalmente-loira_reproducao_twitter.jpg",
   "descricao": "Elle Woods é uma jovem estilosa que parece superficial, mas surpreende todos ao ingressar na prestigiada faculdade de direito de Harvard para reconquistar seu ex-namorado. Lá, ela prova que inteligência e determinação podem desafiar preconceitos e criar impacto.",
   "nota": 6.4,
   "fav": true
@@ -105,7 +105,7 @@
 {
   "_id": 15,
   "titulo": "Sociedade dos poetas mortos",
-  "capa": "https://static.todamateria.com.br/upload/so/ci/sociedade-dos-poetas-mortos-og.jpg",
+  "capa": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/18279FDDBE420E39710ABA28A93D59FB1CAEC5C044E1670A69BB80466B2D3F1B/scale?width=1200&aspectRatio=1.78&format=webp",
   "descricao": "Em um colégio interno conservador, um professor de literatura inspira seus alunos a viverem suas vidas com paixão e a 'sugar a essência da vida', apresentando-lhes o poder da poesia. Suas lições impactam profundamente os jovens, levando-os a questionar normas e buscar seus sonhos.",
   "nota": 8.1,
   "fav": true
@@ -124,7 +124,7 @@
   "capa": "https://rollingstone.com.br/media/_versions/cena-de-gente-grande_reproducao_twitter_widelg.jpg",
   "descricao": "Cinco amigos de infância se reúnem após a morte de seu treinador de basquete. Eles passam o fim de semana em uma casa de campo, relembrando os velhos tempos e revivendo a diversão de sua juventude, enquanto enfrentam as responsabilidades da vida adulta.",
   "nota": 6,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 18,
@@ -148,7 +148,7 @@
   "capa": "https://revista.meuretiro.com.br/wp-content/uploads/2021/12/grinch-1158x595-1-800x450.jpg",
   "descricao": "O Grinch, um ser rabugento que odeia o Natal, tenta destruir a celebração na cidade de Whoville. Contudo, ao interagir com a bondosa Cindy Lou Who, ele começa a questionar seus próprios sentimentos sobre a data.",
   "nota": 6.1,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 1,
@@ -156,5 +156,45 @@
   "capa": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/3CB224793086A2BDC7AB42C15303319D8140767868E5B6C06EC8459BC6DB40CD/scale?width=1200&aspectRatio=1.78&format=webp",
   "descricao": "Mia é uma garota de 15 anos que vive com sua mãe em São Francisco. De repente, ela descobre que seu pai é o Príncipe de Genóvia, um pequeno país europeu. Ela recebe a visita de sua avó recém-descoberta, que passa a lhe dar aulas de etiqueta, ensinando-a como uma princesa deve se portar. Mas quando se aproxima a data de seu aniversário, Mia precisa definir que caminho pretende tomar em sua vida: tornar-se uma princesa e se mudar para Genóvia ou permanecer morando com a mãe.",
   "nota": 6.4,
+  "fav": false
+},
+{
+  "_id": 21,
+  "titulo": "Como Perder um Homem em 10 Dias",
+  "capa": "https://ziipi.com/wp-content/uploads/2024/09/Como-Perder-um-Homem-em-10-Dias.jpg",
+  "descricao": "Andie Anderson, uma jornalista de moda, escreve sobre relacionamentos e decide testar uma teoria sobre como fazer um homem terminar um relacionamento. Ela escolhe Ben Barry, um publicitário que aposta que pode fazer uma mulher se apaixonar por ele em 10 dias. O que começa como um jogo vira uma situação complicada à medida que eles começam a se envolver de verdade.",
+  "nota": 6.7,
+  "fav": false
+},
+{
+  "_id": 25,
+  "titulo": "10 Coisas que Eu Odeio em Você",
+  "capa": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/16713D97ED1BED720A77CB615C4C7BEED0B17C3274F2244D6EECDBFDF635A699/scale?width=506&aspectRatio=2.00&format=webp",
+  "descricao": "Uma moderna adaptação de 'A Megera Domada', de Shakespeare. A história segue Kat, uma jovem rebelde que não está interessada em namorar, até que um rapaz chamado Patrick é pago para se aproximar dela e fazê-la se apaixonar. No entanto, ele acaba se apaixonando por ela de verdade.",
+  "nota": 7.3,
+  "fav": false
+},
+{
+  "_id": 22,
+  "titulo": "La La Land: Cantando Estações",
+  "capa": "https://m.media-amazon.com/images/S/pv-target-images/1bac0609a14b02b52d0cd91cbce9ffe2e593f3f8d39aa8fe05213553646ed582.jpg",
+  "descricao": "Um musical que segue a história de Mia, uma aspirante a atriz, e Sebastian, um pianista de jazz, enquanto tentam seguir suas carreiras e sonhos em Los Angeles. Apesar de seu amor crescente, eles enfrentam desafios enquanto buscam sucesso em suas respectivas áreas.",
+  "nota": 8,
+  "fav": false
+},
+{
+  "_id": 23,
+  "titulo": "Como Eu Era Antes de Você",
+  "capa": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8lL8IewGHfTWclfTK5xs4DiApzGoUitBT90DH4NqbhV4VzXStkmIPJdF1hs0rAmp_nr36CZJwtsX7th9eWnvxfGo2F29q4fA80i_ChsIoGRaTlA0_xWW9tLW9Z_QUzddD4Mr2iPhSzFAa/s1600/6-reasons-why-you-need-to-see-me-before-you-1012712.jpg",
+  "descricao": "Louisa Clark é uma jovem mulher que se torna cuidadora de Will, um homem rico que ficou tetraplégico após um acidente. À medida que eles se aproximam, Louisa tenta mostrar a Will que a vida ainda pode valer a pena, apesar de suas limitações.",
+  "nota": 7.4,
+  "fav": true
+},
+{
+  "_id": 24,
+  "titulo": "Invocação do Mal",
+  "capa": "https://pop.proddigital.com.br/wp-content/uploads/sites/8/2023/04/01-39.jpg",
+  "descricao": "Baseado em eventos reais, o filme segue os investigadores paranormais Ed e Lorraine Warren enquanto ajudam uma família que está sendo aterrorizada por uma presença demoníaca em sua casa. O filme é conhecido por seu suspense e atmosfera de terror psicológico.",
+  "nota": 7.5,
   "fav": false
 }]
