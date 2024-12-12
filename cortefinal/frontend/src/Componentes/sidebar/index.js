@@ -28,9 +28,9 @@ function Sidebar({largura, setLargura}) {
                 onClick={fechar} 
                 className="menu"
                 style={{cursor: "pointer", margin: "10px"}}/> <br/>
-            <Link className="link" to={"/"} style={{textDecoration: "none", color: "#fff", margin: "10px", fontSize: "x-large", fontWeight: 500}} id="home">Home</Link> <br/>
-            <Link className="link" to={"/favoritos"} style={{textDecoration: "none", color: "#fff", margin: "10px", fontSize: "x-large", fontWeight: 500}}>Favoritos</Link><br/>
-            <Link className="link" to={"/listas"} style={{textDecoration: "none", color: "#fff", margin: "10px", fontSize: "x-large", fontWeight: 500}}>Minhas Listas</Link><br/>
+            <Link className="link" to={"/"} style={{textDecoration: "none", color: "#fff", margin: "10px", fontSize: "x-large", fontWeight: 500}} id="home" onClick={fechar}>Home</Link> <br/>
+            <Link className="link" to={"/favoritos"} style={{textDecoration: "none", color: "#fff", margin: "10px", fontSize: "x-large", fontWeight: 500}} onClick={fechar}>Favoritos</Link><br/>
+            <Link className="link" to={"/listas"} style={{textDecoration: "none", color: "#fff", margin: "10px", fontSize: "x-large", fontWeight: 500}} onClick={fechar}>Minhas Listas</Link><br/>
         </aside>
     )
 }

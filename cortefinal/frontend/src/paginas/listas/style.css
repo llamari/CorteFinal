@@ -12,3 +12,36 @@
     margin: 1rem;
     padding: 0rem 1rem 1rem 1rem;
 }
+
+#Nome {
+    height: 2rem;
+    border-radius: 2rem;
+    width: 20rem;
+    margin: 1rem;
+}
+
+#formulario {
+    justify-content: center;
+    text-align: center;
+}
+
+#adiciona {
+    height: 2.5rem;
+    border-radius: 2rem;
+    width: 6rem;
+    margin: 1rem;
+    cursor: pointer;
+    background-color: rgb(159, 192, 255);
+    border: solid rgb(94, 136, 216) 3px;
+}
+
+.infoo{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 0 1rem 0 0rem;
+}
+
+.lixo {
+    cursor: pointer;
+}

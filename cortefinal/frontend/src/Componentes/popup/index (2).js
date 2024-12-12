@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './style.css';
 
 // Função para adicionar filme à lista
-const add = async (idLista, idFilme) => {
+const add = async (idLista, idFilme, setIsPopupOpen, isPopupOpen) => {
     try {
-        const response = await axios.patch(`http://localhost:5000/api/listas/${idLista}/adicionar`, {
+        const response = await axios.patch(`http://localhost:5000/api/${idLista}/adicionar`, {
             filmeId: idFilme,
         });
         console.log('Filme adicionado com sucesso:', response.data);
+        setIsPopupOpen(!isPopupOpen);
     } catch (error) {
         console.error('Erro ao adicionar filme:', error.response ? error.response.data : error.message);
     }
@@ -35,14 +37,14 @@ const Popup = () => {
 
     return (
         <div>
-            <button onClick={() => setIsPopupOpen(!isPopupOpen)}>Adicionar a uma lista</button>
+            <button onClick={() => setIsPopupOpen(!isPopupOpen)} className='PopUp'>Adicionar a uma lista</button>
 
             {isPopupOpen && (
                 <div className="popup-overlay">
                     <div className="popup-content">
                         <ul>
                             {listas.map((lista) => (
-                                <button key={lista._id} onClick={() => add(lista._id, id)}>{lista.titulo}</button>
+                                <button key={lista._id} onClick={() => add(lista._id, id, setIsPopupOpen, isPopupOpen)}>{lista.titulo}</button>
                             ))}
                         </ul>
                         <button onClick={() => setIsPopupOpen(false)}>Fechar</button>

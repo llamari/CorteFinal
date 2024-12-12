@@ -22,7 +22,7 @@
 }
 
 .popup-content button {
-    background-color: #007BFF;
+    background-color: #053a72;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -37,4 +37,13 @@
 
 ul {
     list-style: none;
+}
+
+.PopUp{
+    border: solid grey 3px;
+    border-radius: 1.5rem;
+    height: 2.5rem;
+    width: 9rem;
+    cursor: pointer;
+    margin: 1rem;
 }

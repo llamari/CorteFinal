@@ -9,7 +9,7 @@ function Favs() {
   // Função para buscar filmes do backend
   const fetchFilmes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/filmes'); // Endpoint do backend
+      const response = await axios.get('http://localhost:5000/filmes'); // Endpoint do backend
       setFilmes(response.data); // Atualiza o estado com os filmes retornados
     } catch (error) {
       console.error('Erro ao buscar filmes:', error);

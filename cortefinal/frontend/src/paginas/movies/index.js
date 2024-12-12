@@ -10,7 +10,7 @@ const fav = async (id, filmes, setFilmes) => {
     const numericId = parseInt(id);
 
     // Atualiza o atributo 'fav' no backend
-    await axios.patch(`http://localhost:5000/api/filmes/${numericId}/fav`);
+    await axios.patch(`http://localhost:5000/${numericId}/fav`);
 
     // Atualiza o estado local para refletir a mudança
     const updatedFilmes = filmes.map(filme => 
@@ -31,7 +31,7 @@ function Movie() {
   // Função para buscar filmes
   const fetchFilmes = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/filmes');
+      const response = await axios.get('http://localhost:5000/filmes');
       setFilmes(response.data);
     } catch (error) {
       console.error('Erro ao buscar filmes:', error);
@@ -52,16 +52,18 @@ function Movie() {
             <h1 id='title'>{filme.titulo}</h1>
             <p id='sinopse'>{filme.descricao}</p>
             <p id='note'><b>{filme.nota}/10</b></p>
-            {filme.fav ? 
-              <div>
-                <button onClick={() => fav(filme._id, filmes, setFilmes)} className="favorito">Favorito</button>
-              </div>
-              : 
-              <div>
-                <button onClick={() => fav(filme._id, filmes, setFilmes)} className="favoritar">Favoritar</button>
-              </div>
-            }
-            <Popup/>
+            <div className="display">
+              {filme.fav ? 
+                <div>
+                  <button onClick={() => fav(filme._id, filmes, setFilmes)} className="favorito">Favorito</button>
+                </div>
+                : 
+                <div>
+                  <button onClick={() => fav(filme._id, filmes, setFilmes)} className="favoritar">Favoritar</button>
+                </div>
+              }
+              <Popup/>
+            </div>
           </div>
         ))}
     </div>
