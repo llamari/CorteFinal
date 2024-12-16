@@ -36,9 +36,10 @@ function Listas() {
     }, []);
 
     const criarLista = async (nome) => {
+        console.log('oi')
         try {
             const response = await axios.post('http://localhost:5000/api/listas', { nome: nome });
-            console.log('Lista criada:', response.data);
+            console.log('Lista criada:', response);
             setNomeLista('');
         } catch (error) {
             console.error('Erro ao criar a lista:', error.message);
@@ -81,6 +82,7 @@ function Listas() {
                     placeholder="Nome da lista" 
                     value={nomeLista} 
                     onChange={nome}
+                    name="nomelista"
                     id="Nome" 
                 />
                 <button type="submit" id="adiciona">Adicionar</button>
