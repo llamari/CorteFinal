@@ -197,4 +197,100 @@
   "descricao": "Baseado em eventos reais, o filme segue os investigadores paranormais Ed e Lorraine Warren enquanto ajudam uma família que está sendo aterrorizada por uma presença demoníaca em sua casa. O filme é conhecido por seu suspense e atmosfera de terror psicológico.",
   "nota": 7.5,
   "fav": false
+},
+{
+  "_id": 26,
+  "titulo": "A Freira",
+  "capa": "https://img.redbull.com/images/c_crop,w_1900,h_950,x_0,y_0/c_auto,w_1200,h_600/f_auto,q_auto/redbullcom/2018/09/10/1c3048eb-9e19-4ace-acb7-b666c0574096/filmes-semelhantes-a-freira-01",
+  "descricao": "Um prequel de 'Invocação do Mal', onde a irmã Irene investiga uma série de mortes misteriosas em um convento na Romênia, onde uma entidade demoníaca conhecida como 'A Freira' é revelada.",
+  "nota": 5.3,
+  "fav": false
+},
+{
+  "_id": 27,
+  "titulo": "Chuck",
+  "capa": "https://oimparcial.com.br/app/uploads/2021/08/15904294885ecc0730a916a_1590429488_3x2_md.jpg",
+  "descricao": "Baseado na vida do boxeador Chuck Wepner, que ficou famoso por lutar contra Muhammad Ali, o filme segue sua vida conturbada, tanto dentro quanto fora do ringue.",
+  "nota": 6.6,
+  "fav": false
+},
+{
+  "_id": 28,
+  "titulo": "Toy Story",
+  "capa": "https://lumiere-a.akamaihd.net/v1/images/eu_dp_toy-story-3_c169_r_063ea214.jpeg?region=0,0,1460,824",
+  "descricao": "Quando o dono Andy não está por perto, seus brinquedos ganham vida. Woody, o cowboy, deve lidar com a chegada de um novo brinquedo, Buzz Lightyear, que ameaça seu posto de brinquedo favorito.",
+  "nota": 8.3,
+  "fav": false
+},
+{
+  "_id": 29,
+  "titulo": "O Amor é Cego",
+  "capa": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/46CD128553A125359B54D307EC69DC7D79E95653DA9D6B531B3DA141AB7A71C9/scale?width=1200&aspectRatio=1.78&format=webp",
+  "descricao": "Comédia romântica em que um homem superficial, obcecado por aparência, perde a visão e se apaixona por uma mulher que ele inicialmente acha feia, mas que tem uma beleza interior extraordinária.",
+  "nota": 6.9,
+  "fav": false
+},
+{
+  "_id": 30,
+  "titulo": "50 Tons de Preto",
+  "capa": "https://m.media-amazon.com/images/S/pv-target-images/4f62ce876db6a650d894fb434f48df6d70d31d66cac978de9540f4df70a93d87.jpg",
+  "descricao": "Uma paródia hilária da franquia '50 Tons de Cinza', focando na relação entre um empresário e uma mulher inocente, com situações absurdas e piadas sexuais.",
+  "nota": 4.7,
+  "fav": false
+},
+{
+  "_id": 31,
+  "titulo": "Troca de Talentos",
+  "capa": "https://www.tvtime.com/_next/image?url=https%3A%2F%2Fartworks.thetvdb.com%2Fbanners%2Fmovies%2F11045%2Fbackgrounds%2F11045.jpg&w=3840&q=75",
+  "descricao": "Uma comédia em que um casal de adultos trocam de corpos e têm que viver a vida um do outro, enfrentando as dificuldades e surpresas dessa troca inesperada.",
+  "nota": 6.1,
+  "fav": false
+},
+{
+  "_id": 32,
+  "titulo": "Intocáveis",
+  "capa": "https://m.media-amazon.com/images/S/pv-target-images/e02281e750a40dfb99a7bb3f16936f2dc7f73f96c98e666bbf1d9284a3d922b1.jpg",
+  "descricao": "Baseado em uma história real, o filme segue a amizade improvável entre um milionário tetraplégico e seu cuidador de origens humildes.",
+  "nota": 8.5,
+  "fav": false
+},
+{
+  "_id": 33,
+  "titulo": "Stuart Little",
+  "capa": "https://aventurasnahistoria.com.br/media/_versions/curiosidades/stuart_little_widelg.jpg",
+  "descricao": "Uma aventura com Stuart, um ratinho adotado por uma família humana, que deve lidar com a vida em um mundo feito para humanos, enquanto enfrenta um vilão perigoso.",
+  "nota": 6,
+  "fav": false
+},
+{
+  "_id": 34,
+  "titulo": "Um Sonho Possível",
+  "capa": "https://classic.exame.com/wp-content/uploads/2023/08/UmSonhoPossivel.jpg?quality=70&strip=info&w=1024",
+  "descricao": "Baseado em uma história real, o filme segue a vida de Michael Oher, um jovem sem-teto que é adotado por uma família rica e se torna um jogador de futebol americano.",
+  "nota": 7.6,
+  "fav": false
+},
+{
+  "_id": 35,
+  "titulo": "Até Que a Morte Nos Separe",
+  "capa": "https://m.media-amazon.com/images/S/pv-target-images/88d422784d94cbd53f9c90d50276304d264b40a13ce30c0196753f0d02c40ed8.jpg",
+  "descricao": "Uma comédia romântica em que um casal apaixonado tem que enfrentar uma situação desesperadora quando um dos membros da relação é sequestrado.",
+  "nota": 6.3,
+  "fav": false
+},
+{
+  "_id": 36,
+  "titulo": "Até Que a Sorte Nos Separe",
+  "capa": "https://agarotadocasacoroxo.wordpress.com/wp-content/uploads/2012/10/atequeasortenossepare.jpg?w=636",
+  "descricao": "Uma comédia brasileira sobre um homem que, após ganhar na loteria, perde tudo o que conquistou e deve aprender a lidar com a perda e recomeçar do zero.",
+  "nota": 5.7,
+  "fav": false
+},
+{
+  "_id": 37,
+  "titulo": "Harry Potter: O Prisioneiro de Azkaban",
+  "capa": "https://mundobruxo.com.br/wp-content/uploads/2024/05/poster-prisioneiro-de-azkaban-horizontal.jpg",
+  "descricao": "Harry Potter retorna à Hogwarts para seu terceiro ano, onde descobre segredos sobre seu passado e enfrenta perigos, incluindo Sirius Black, um fugitivo da prisão de Azkaban.",
+  "nota": 7.9,
+  "fav": false
 }]
