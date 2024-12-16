@@ -12,7 +12,7 @@ const ListaSchema = new mongoose.Schema({
     required: false,  // Filme é opcional no início
   }],
   idDono: {
-    type: Number,
+    type: String,
     required: false, //depois mudar para verdadeiro 
   }
 });

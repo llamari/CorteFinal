@@ -2,10 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
-const listasRoutes = require('./routes/listasRoutes'); // Importa as rotas
 
 const dbConfig = require('./config/db');		
 const filmesRoutes = require('./routes/filmesRoutes');		
+const listasRoutes = require('./routes/listasRoutes');
+const usuariosRoutes = require('./routes/usuariosRoutes');
 const app = express();
 const port = 5000;
 
@@ -13,10 +14,9 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());  // Para parsear o corpo das requisições como JSON
 
-dbConfig();
 
 // Conexão com o MongoDB (caso esteja utilizando o MongoDB)
-mongoose.connect('mongodb://localhost:27017/seuBanco', {
+mongoose.connect('mongodb://localhost:27017/CorteFinal', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
@@ -28,10 +28,10 @@ mongoose.connect('mongodb://localhost:27017/seuBanco', {
 // Rotas
 app.use('/', filmesRoutes);	
 app.use('/api', listasRoutes);  // Prefixo /api para todas as rotas definidas em listasRoutes
+app.use('/login', usuariosRoutes);
 
 // Inicia o servidor
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
 
-//a freira, chuck, toy story, o amor é cego, 50 tons de preto, trocando talentos, intocáveis, stuart little, um sonho possivel, até que a morte nos separe, até que a sorte nos separe, harry potter:o prisioneiro de askaban

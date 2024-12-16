@@ -1,0 +1,44 @@
+#Logar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2rem;
+}
+
+#email {
+    width: 30%;
+    align-self: center;
+    margin: 1rem;
+    height: 2rem;
+    border-radius: 1.5rem;
+    border: solid rgb(4, 4, 77) 2px;
+    background-color: rgb(208, 208, 248);
+}
+
+#senha {
+    width: 30%;
+    align-self: center;
+    margin: 1rem;
+    height: 2rem;
+    border-radius: 1.5rem;
+    border: solid rgb(4, 4, 77) 2px;
+    background-color: rgb(208, 208, 248);
+}
+
+#enviar {
+    width: 25%;
+    align-self: center;
+    margin: 1rem;
+    height: 2.5rem;
+    border-radius: 1.5rem;
+    border: solid rgb(4, 4, 77) 2px;
+    background-color: rgb(132, 132, 201);
+    font-size: larger;
+    cursor: pointer;
+}
+
+#informações {
+    text-decoration: none;
+    color: black;
+    align-self: center;
+}

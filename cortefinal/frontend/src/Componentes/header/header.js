@@ -12,7 +12,7 @@ function Header() {
 
     return (
         <header>
-            <Link to={"/"}>
+            <Link to={"/home"}>
                 <img src="/assets/logo.png" alt="Logo" />
             </Link>
             {/* Clique na imagem do menu chama a função abrir */}

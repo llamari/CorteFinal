@@ -4,7 +4,7 @@
   "capa": "https://s2-techtudo.glbimg.com/8IRLHOxBLxSznI9dM2mfKla722k=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2023/X/F/SsSXBsQ4GBjHAAPdgQBg/as-vantagens-de-ser-invisivel.html-.jpg",
   "descricao": "Um jovem tímido se esconde em seu próprio mundo até conhecer dois irmãos que o ajudam a viver novas experiências. Embora esteja feliz nessa nova fase, ele não esquece as tristezas do passado, que têm origem em uma chocante revelação.",
   "nota": 7.9,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 3,
@@ -20,7 +20,7 @@
   "capa": "https://m.media-amazon.com/images/S/pv-target-images/64768daa6daa38f8bf9ac98b683c07a2d660c396a94e3aeb013361e12a4e7df0.jpg",
   "descricao": "Nina Sayers é uma bailarina dedicada que busca a perfeição. Quando consegue o papel principal na produção O Lago dos Cisnes, ela precisa interpretar tanto o doce Cisne Branco quanto o sedutor Cisne Negro. À medida que a pressão aumenta, a obsessão de Nina com a perfeição começa a afetar sua mente, levando-a a um perigoso e sombrio colapso psicológico.",
   "nota": 8,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 5,
@@ -44,7 +44,7 @@
   "capa": "https://uploads.alternativanerd.com.br/wp-content/uploads/2023/11/AN_Como-Treinar-o-Seu-Dragao.jpg",
   "descricao": "Soluço é um jovem viking que vive em uma vila onde lutar contra dragões é um estilo de vida. Ao encontrar um Fúria da Noite, um dragão raro chamado Banguela, ele descobre que essas criaturas não são tão perigosas quanto parecem. Juntos, eles formam uma amizade improvável e desafiam tudo o que a vila acredita sobre dragões.",
   "nota": 8.1,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 8,
@@ -60,7 +60,7 @@
   "capa": "https://www.sescsp.org.br/wp-content/uploads/2024/11/de-volta-para-o-futuro-capa.jpg",
   "descricao": "Marty McFly, um adolescente comum, é acidentalmente enviado de volta ao ano de 1955 em uma máquina do tempo construída pelo excêntrico cientista Dr. Emmett Brown. Ao interferir nos eventos do passado, Marty precisa garantir que seus pais se apaixonem para não apagar sua própria existência e, ao mesmo tempo, encontrar uma forma de voltar para o futuro.",
   "nota": 8.5,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 10,
@@ -84,7 +84,7 @@
   "capa": "https://universosagas.ig.com.br/wp-content/uploads/2024/03/steve-trevor-and-wonder-woman-in-2017-s-wonder-woman.png",
   "descricao": "Diana, princesa das Amazonas, é treinada para ser uma guerreira imbatível. Quando um piloto cai na ilha em que vive e conta sobre uma guerra devastadora no mundo exterior, Diana deixa seu lar, convencida de que pode acabar com o conflito. Lutando lado a lado com os homens na Primeira Guerra Mundial, ela descobre seu verdadeiro poder e propósito.",
   "nota": 7.4,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 13,
@@ -92,7 +92,7 @@
   "capa": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/F63C3AC9B644F2D8ACD0A72847310A3854F763BFE484C84493AB66AD8E55EB49/scale?width=1200&aspectRatio=1.78&format=webp",
   "descricao": "Em uma festa, Alice descobre um mundo mágico ao seguir um coelho branco. Lá, encontra criaturas fantásticas e descobre que é a única capaz de derrotar a terrível Rainha Vermelha para restaurar a paz no País das Maravilhas.",
   "nota": 6.4,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 14,
@@ -100,7 +100,7 @@
   "capa": "https://rollingstone.com.br/media/uploads/reese-witherspoon-em-legalmente-loira_reproducao_twitter.jpg",
   "descricao": "Elle Woods é uma jovem estilosa que parece superficial, mas surpreende todos ao ingressar na prestigiada faculdade de direito de Harvard para reconquistar seu ex-namorado. Lá, ela prova que inteligência e determinação podem desafiar preconceitos e criar impacto.",
   "nota": 6.4,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 15,
@@ -108,7 +108,7 @@
   "capa": "https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/18279FDDBE420E39710ABA28A93D59FB1CAEC5C044E1670A69BB80466B2D3F1B/scale?width=1200&aspectRatio=1.78&format=webp",
   "descricao": "Em um colégio interno conservador, um professor de literatura inspira seus alunos a viverem suas vidas com paixão e a 'sugar a essência da vida', apresentando-lhes o poder da poesia. Suas lições impactam profundamente os jovens, levando-os a questionar normas e buscar seus sonhos.",
   "nota": 8.1,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 16,
@@ -188,7 +188,7 @@
   "capa": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8lL8IewGHfTWclfTK5xs4DiApzGoUitBT90DH4NqbhV4VzXStkmIPJdF1hs0rAmp_nr36CZJwtsX7th9eWnvxfGo2F29q4fA80i_ChsIoGRaTlA0_xWW9tLW9Z_QUzddD4Mr2iPhSzFAa/s1600/6-reasons-why-you-need-to-see-me-before-you-1012712.jpg",
   "descricao": "Louisa Clark é uma jovem mulher que se torna cuidadora de Will, um homem rico que ficou tetraplégico após um acidente. À medida que eles se aproximam, Louisa tenta mostrar a Will que a vida ainda pode valer a pena, apesar de suas limitações.",
   "nota": 7.4,
-  "fav": true
+  "fav": false
 },
 {
   "_id": 24,
