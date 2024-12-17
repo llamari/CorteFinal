@@ -5,8 +5,8 @@ const getUsuario = async (req,res) => {
         const usuarios = await Usuarios.find();
         res.json(usuarios);
     } catch (error) {
-        console.error("Erro ao buscar filmes: ", error);
-        res.status(500).json({message: 'Erro ao buscar filmes'});
+        console.error("Erro ao buscar users: ", error);
+        res.status(500).json({message: 'Erro ao buscar users'});
     }
 };
 
@@ -48,7 +48,8 @@ const verifica = async (req, res) => {
             // Verifica se a senha está correta
             if (user.senha === senha) {
                 console.log("Usuário autenticado com sucesso!");
-                return res.status(200).json({ success: true, message: "Login bem-sucedido" });
+                const ide = String(user._id);
+                return res.status(200).json({ success: true, message: "Login bem-sucedido", id: ide });
             } else {
                 console.log("Usuário ou senha incorretos");
                 return res.status(401).json({ success: false, message: "Senha incorreta" });

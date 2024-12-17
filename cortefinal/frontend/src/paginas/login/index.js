@@ -17,7 +17,9 @@ function Login() {
       });
 
       if (response.data.success) {
-        window.location.href = '/home';
+        const ide = response.data.id;
+        console.log("Seu id é: ", ide);
+        window.location.href = `/${ide}/home`;
       }
     } catch (error) {
       if (error.response) {

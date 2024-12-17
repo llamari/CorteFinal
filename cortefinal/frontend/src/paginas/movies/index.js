@@ -10,23 +10,50 @@ const fav = async (id, filmes, setFilmes) => {
     const numericId = parseInt(id);
 
     // Atualiza o atributo 'fav' no backend
-    await axios.patch(`http://localhost:5000/${numericId}/fav`);
+    await axios.patch(`http://localhost:5000/api/67607a7e9a92c2b898ab1e42/adicionar`, {
+      filmeId: id
+    });
 
     // Atualiza o estado local para refletir a mudança
     const updatedFilmes = filmes.map(filme => 
       filme._id === numericId ? { ...filme, fav: !filme.fav } : filme
     );
+    await axios.patch(`http://localhost:5000/${id}/fav`);
 
     setFilmes(updatedFilmes); // Atualiza o estado com a nova lista de filmes
-    console.log('Filme marcado/desmarcado como favorito');
+    console.log('Filme marcado como favorito');
   } catch (error) {
     console.error('Erro ao marcar como favorito:', error.message);
   }
 };
 
+const unfav = async (id, filmes, setFilmes) => {
+  try {
+    // Garante que o ID seja enviado como número
+    const numericId = parseInt(id);
+
+    // Remover o filme da lista de favoritos
+    const response = await axios.delete(`http://localhost:5000/api/67607a7e9a92c2b898ab1e42/deletar/filme/${id}`);
+    console.log('Filme deletado: ', response.data);
+
+    // Atualiza o estado local para refletir a mudança
+    const updatedFilmes = filmes.map(filme => 
+      filme._id === numericId ? { ...filme, fav: !filme.fav } : filme
+    );
+    await axios.patch(`http://localhost:5000/${id}/fav`);
+
+    setFilmes(updatedFilmes); // Atualiza o estado com a nova lista de filmes
+    console.log('Filme desmarcado como favorito');
+  } catch (error) {
+    console.error('Erro ao remover como favorito:', error.message);
+  }
+};
+
+
 function Movie() {
   const { id } = useParams(); // Obtém o id da URL
   const [filmes, setFilmes] = useState([]);
+  const [listas, setListas] = useState([])
 
   // Função para buscar filmes
   const fetchFilmes = async () => {
@@ -38,8 +65,18 @@ function Movie() {
     }
   };
 
+  const ChamaListas = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/listas')
+      setListas(response.data);
+    } catch (error) {
+      console.error("Erro ao chamar listas: ", error);
+    }
+  }
+
   useEffect(() => {
     fetchFilmes();
+    ChamaListas();
   }, []);
 
   return (
@@ -55,11 +92,11 @@ function Movie() {
             <div className="display">
               {filme.fav ? 
                 <div>
-                  <button onClick={() => fav(filme._id, filmes, setFilmes)} className="favorito">Favorito</button>
+                  <button onClick={() => fav(filme._id, listas, setListas)} className="favorito">Favorito</button>
                 </div>
                 : 
                 <div>
-                  <button onClick={() => fav(filme._id, filmes, setFilmes)} className="favoritar">Favoritar</button>
+                  <button onClick={() => unfav(filme._id, filmes, setFilmes)} className="favoritar">Favoritar</button>
                 </div>
               }
               <Popup/>

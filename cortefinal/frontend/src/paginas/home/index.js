@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './style.css';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function Home() {
+  const { user } = useParams();
+  console.log(user);
+
   const [filmes, setFilmes] = useState([]); // Estado para armazenar os filmes
 
   // Função para buscar filmes do backend
@@ -25,7 +29,7 @@ function Home() {
     <div>
       <ul>
         {filmes.map((filme) => (
-          <Link to={`/filmes/${filme._id}`} key={filme._id} className='ir'>
+          <Link to={`/${user}/filmes/${filme._id}`} key={filme._id} className='ir'>
             <li className='film'>
               <h3 id='titulo'>{filme.titulo}</h3>
               <img src={filme.capa} alt={filme.titulo} width="100" id='capa' />

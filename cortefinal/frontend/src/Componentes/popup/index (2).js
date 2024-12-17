@@ -44,6 +44,9 @@ const Popup = () => {
                     <div className="popup-content">
                         <ul>
                             {listas.map((lista) => (
+                                lista._id==='67607a7e9a92c2b898ab1e42' ?
+                                <div></div>
+                                :
                                 <button key={lista._id} onClick={() => add(lista._id, id, setIsPopupOpen, isPopupOpen)}>{lista.titulo}</button>
                             ))}
                         </ul>

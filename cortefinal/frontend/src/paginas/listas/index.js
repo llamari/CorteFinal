@@ -91,6 +91,10 @@ function Listas() {
             <h2>Listas:</h2>
             <ul id="ul">
                 {listas.map((lista) => (
+                    lista._id==='67607a7e9a92c2b898ab1e42' ? 
+                    <div></div>
+                    :
+                    
                     <li key={lista._id} className="List">
                         <div className="infoo">
                             <h2>{lista.titulo}</h2>
