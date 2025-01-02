@@ -4,8 +4,11 @@ import React, { useState, useEffect } from "react";
 import './style.css';
 import { Link } from "react-router-dom";
 import { FaHeart, FaTrashAlt } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 
 function Listas() {
+    const { user } = useParams();
+
     const [listas, setListas] = useState([]);
     const [nomeLista, setNomeLista] = useState('');  // Para controlar o input do nome da lista
     const [filmes, setFilmes] = useState([]); // Para armazenar os filmes do backend
@@ -91,10 +94,6 @@ function Listas() {
             <h2>Listas:</h2>
             <ul id="ul">
                 {listas.map((lista) => (
-                    lista._id==='67607a7e9a92c2b898ab1e42' ? 
-                    <div></div>
-                    :
-                    
                     <li key={lista._id} className="List">
                         <div className="infoo">
                             <h2>{lista.titulo}</h2>
@@ -107,7 +106,7 @@ function Listas() {
                                 const filme = filmes.find((f) => f._id === filmeId);
                                 return (
                                     filme ? (
-                                        <Link to={`/filmes/${filme._id}`} key={filme._id} className='ir'>
+                                        <Link to={`/${user}/filmes/${filme._id}`} key={filme._id} className='ir'>
                                             <li className='film'>
                                                 <h3 id='titulo'>{filme.titulo}</h3>
                                                 <div className="infoo">

@@ -12,18 +12,18 @@ function Header({ user }) {
 
     return (
         <header>
-            <Link to={`/${user}/home`}>
-                <img src="/assets/logo.png" alt="Logo" />
-            </Link>
+                <Link to={`/${user}/home`}>
+                    <img src="/assets/logo.png" alt="Logo" />
+                </Link>
 
-            <h1>CorteFinal</h1>
+                <h1>CorteFinal</h1>
 
-            <img
-                src="/assets/menu.png"
-                id="menu"
-                alt="Menu"
-                onClick={abrir}
-            />
+                <img
+                    src="/assets/menu.png"
+                    id="menu"
+                    alt="Menu"
+                    onClick={abrir}
+                />
 
             <Sidebar largura={largura} setLargura={setLargura} user={user}/>
         </header>
