@@ -1,31 +1,36 @@
 import React, { useState } from "react";
 import './style.css';
-import Sidebar from "../sidebar";
 import { Link } from "react-router-dom";
+import { IoListOutline } from "react-icons/io5";
+import { MdLogout } from "react-icons/md";
 
-function Header({ user }) {
-    const [largura, setLargura] = useState("0");
+function Header() {
 
-    function abrir() {
-        setLargura("230px");
+    const logOut = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/";
     }
-
+    
     return (
         <header>
-                <Link to={`/${user}/home`}>
+            <div id="logo">
+                <Link to={`/home`}>
                     <img src="/assets/logo.png" alt="Logo" />
                 </Link>
+                <h1 id="header-title">CorteFinal</h1>
+            </div>
 
-                <h1>CorteFinal</h1>
+            <div id="menu">
+                <Link className="menu-item" to={`/listas`}>
+                    <IoListOutline size={35} />
+                    <p>Suas listas</p>
+                </Link>
 
-                <img
-                    src="/assets/menu.png"
-                    id="menu"
-                    alt="Menu"
-                    onClick={abrir}
-                />
-
-            <Sidebar largura={largura} setLargura={setLargura} user={user}/>
+                <Link className="menu-item" onClick={logOut}>
+                    <MdLogout size={30} />
+                    <p>Sair</p>
+                </Link>
+            </div>
         </header>
     );
 }

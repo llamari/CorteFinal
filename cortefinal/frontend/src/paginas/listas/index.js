@@ -3,52 +3,48 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './style.css';
 import { Link } from "react-router-dom";
-import { FaHeart, FaTrashAlt } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
+import Button from "../../Componentes/button";
 
 function Listas() {
-    const { user } = useParams();
-
+    const token = localStorage.getItem('token');
     const [listas, setListas] = useState([]);
     const [nomeLista, setNomeLista] = useState('');  // Para controlar o input do nome da lista
-    const [filmes, setFilmes] = useState([]); // Para armazenar os filmes do backend
 
     // Função para buscar as listas do backend
     const fetchListas = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/listas'); // Endpoint do backend
+            const response = await axios.get('http://localhost:5000/api/listas', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }); // Endpoint do backend
             setListas(response.data); // Atualiza o estado com as listas retornadas
         } catch (error) {
             console.error('Erro ao buscar listas:', error);
         }
     };
 
-    // Função para buscar filmes do backend
-    const fetchFilmes = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/filmes'); // Endpoint de filmes
-        setFilmes(response.data); // Atualiza o estado com os filmes retornados
-      } catch (error) {
-        console.error('Erro ao buscar filmes:', error);
-      }
-    };
-  
     useEffect(() => {
         fetchListas();
-        fetchFilmes();
     }, []);
 
     const criarLista = async (nome) => {
-        console.log('oi')
         try {
-            const response = await axios.post('http://localhost:5000/api/listas', { nome: nome });
+            const response = await axios.post('http://localhost:5000/api/listas', { nome: nome }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
             console.log('Lista criada:', response);
             setNomeLista('');
         } catch (error) {
             console.error('Erro ao criar a lista:', error.message);
         }
     };
-      
+
     const nome = (e) => {
         setNomeLista(e.target.value);
     };
@@ -78,60 +74,66 @@ function Listas() {
     };
 
     return (
-        <div>
+        <div id="lists-page">
+            <div id="page-header">
+                <h1 id="lists-title">Suas Listas:</h1>
+
+                <Button />
+            </div>
             <form onSubmit={(e) => { criarLista(nomeLista); }} id="formulario">
-                <input 
-                    type="text" 
-                    placeholder="Nome da lista" 
-                    value={nomeLista} 
+                <input
+                    type="text"
+                    placeholder="Nome da lista"
+                    value={nomeLista}
                     onChange={nome}
                     name="nomelista"
-                    id="Nome" 
+                    id="Nome"
                 />
                 <button type="submit" id="adiciona">Adicionar</button>
             </form>
 
-            <h2>Listas:</h2>
-            <ul id="ul">
+            <div id="all-lists">
                 {listas.map((lista) => (
-                    <li key={lista._id} className="List">
+                    <div key={lista._id} className="List">
                         <div className="infoo">
                             <h2>{lista.titulo}</h2>
-                            <FaTrashAlt onClick={() => deletaLista(lista._id)} className="lixo"/>    
+                            <FaTrashAlt onClick={() => deletaLista(lista._id)} className="lixo" />
                         </div>
-                        
-                        {/* Chama a função fetchFilmes para pegar os filmes com base nos IDs */}
-                        <ul>
-                            {lista.filmes.map((filmeId) => {
-                                const filme = filmes.find((f) => f._id === filmeId);
-                                return (
-                                    filme ? (
-                                        <Link to={`/${user}/filmes/${filme._id}`} key={filme._id} className='ir'>
-                                            <li className='film'>
-                                                <h3 id='titulo'>{filme.titulo}</h3>
-                                                <div className="infoo">
-                                                    <p id='nota'><b>{filme.nota}/10</b></p>
 
-                                                    <div>
-                                                        {filme.fav ? (
-                                                            <FaHeart color="red" />
-                                                        ) : (
-                                                            <FaHeart color="grey" />
-                                                        )}
-                                                       <FaTrashAlt onClick={(event) => { lixinho(event); deletaFilme(lista._id, filme._id); }} />
-                                                </div>
-                                                </div>
-                                            </li>
-                                        </Link>
-                                    ) : (
-                                        <li key={filmeId}>Filme não encontrado</li>
-                                    )
+                        {/* Chama a função fetchFilmes para pegar os filmes com base nos IDs */}
+                        <div>
+                            {lista.filmes.map((filme) => {
+                                if (!filme) {
+                                    return <div>Filme não encontrado</div>;
+                                }
+
+                                return (
+                                    <Link to={`/filmes/${filme.id}`} key={filme.id} className='ir'>
+                                        <div className='movie-card' style={{
+                                            backgroundImage: `
+                                            linear-gradient(
+                                                rgba(15, 9, 48, 0.85),
+                                                rgba(15, 9, 48, 0.85)
+                                            ),
+                                            url(${filme.poster})
+                                            `, backgroundSize: 'cover', backgroundPosition: 'center'
+                                        }}>
+                                            <img src={filme.poster} alt={filme.title} className='poster' />
+                                            <div className="title-div">
+                                                <h3 className="title">{filme.title}</h3>
+                                            </div>
+                                            <div className="movie-trash-div">
+                                                <FaTrashAlt onClick={(e) => { lixinho(e); deletaFilme(lista._id, filme.id); }} className="movie-trash" />
+                                            </div>
+                                        </div>
+                                    </Link>
+
                                 );
                             })}
-                        </ul>
-                    </li>
+                        </div>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

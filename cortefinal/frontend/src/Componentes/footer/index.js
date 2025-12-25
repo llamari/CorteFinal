@@ -3,7 +3,7 @@ import './style.css';
 function Footer() {
     return(
         <footer>
-            <p>© All Rights Reserved to llamari<br/>🤓☝️</p>
+            <p>© Made by llamari<br/>🤓☝️</p>
         </footer>
     )
 }

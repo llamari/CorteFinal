@@ -3,6 +3,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './style.css';
 import Popup from "../../Componentes/popup/index (2)";
+import { FaStar } from "react-icons/fa";
+import { LuClock4 } from "react-icons/lu";
+import { IoCalendarNumberOutline } from "react-icons/io5";
+import Loader from "../../Componentes/loader";
 
 const fav = async (id, filmes, setFilmes) => {
   try {
@@ -10,7 +14,7 @@ const fav = async (id, filmes, setFilmes) => {
     const numericId = parseInt(id);
 
     // Atualiza o estado local para refletir a mudança
-    const updatedFilmes = filmes.map(filme => 
+    const updatedFilmes = filmes.map(filme =>
       filme._id === numericId ? { ...filme, fav: !filme.fav } : filme
     );
     await axios.patch(`http://localhost:5000/${id}/fav`);
@@ -25,16 +29,20 @@ const fav = async (id, filmes, setFilmes) => {
 
 function Movie() {
   const { id } = useParams(); // Obtém o id da URL
-  const [filmes, setFilmes] = useState([]);
+  const [filme, setFilme] = useState(null);
   const [listas, setListas] = useState([])
 
   // Função para buscar filmes
-  const fetchFilmes = async () => {
+  const fetchFilme = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/filmes');
-      setFilmes(response.data);
+      const response = await axios.get(`https://www.omdbapi.com/?i=${id}&apikey=c183224d`);
+      if (response.data.Response === "True") {
+        setFilme(response.data);
+      } else {
+        setFilme(null);
+      }
     } catch (error) {
-      console.error('Erro ao buscar filmes:', error);
+      console.error('Erro ao buscar filme:', error);
     }
   };
 
@@ -48,22 +56,52 @@ function Movie() {
   }
 
   useEffect(() => {
-    fetchFilmes();
+    fetchFilme();
     ChamaListas();
   }, []);
 
   return (
-    <div>
-      {filmes
-        .filter(filme => filme._id === parseInt(id)) // Compara id convertendo para número
-        .map(filme => (
-          <div className='info' key={filme.id}>
-            <img src={filme.capa} alt={filme.titulo} width="70%" id='cape' />
-            <h1 id='title'>{filme.titulo}</h1>
-            <p id='sinopse'>{filme.descricao}</p>
-            <p id='note'><b>{filme.nota}/10</b></p>
-            <div className="display">
-              {filme.fav ? 
+    <div className="movie-container">
+      {(filme && filme !== null) ?
+        <div className='info' key={filme.imdbID}>
+          <img src={filme.Poster} alt={filme.Title} id='cape' />
+          <div id="all-info">
+            <div>
+              <h1 id='title'>{filme.Title}</h1>
+              <div className="subdetails">
+                <p className='infodetails'>
+                  <FaStar />
+                  <b>{filme.imdbRating}/10</b>
+                </p>
+
+                <p className="infodetails">
+                  <LuClock4 />
+                  <b>{filme.Runtime}</b>
+                </p>
+
+                <p className="infodetails">
+                  <IoCalendarNumberOutline />
+                  <b>{filme.Year}</b>
+                </p>
+              </div>
+            </div>
+
+            <p className="details">{filme.Plot}</p>
+
+            <div>
+              <p className="details"><b>Direção: </b>{filme.Director}</p>
+
+              <p className="details"><b>Roteiro: </b>{filme.Writer}</p>
+
+              <p className="details"><b>Elenco: </b>{filme.Actors}</p>
+
+              <p className="details"><b>Gênero: </b>{filme.Genre}</p>
+
+              <p className="details"><b>País: </b>{filme.Country}</p>
+            </div>
+          </div>
+          <div className="display">
+            {/* {filme.fav ? 
                 <div>
                   <button onClick={() => fav(filme._id, listas, setListas)} className="favorito">Favorito</button>
                 </div>
@@ -71,11 +109,15 @@ function Movie() {
                 <div>
                   <button onClick={() => fav(filme._id, filmes, setFilmes)} className="favoritar">Favoritar</button>
                 </div>
-              }
-              <Popup/>
-            </div>
+              } */}
+            <Popup />
           </div>
-        ))}
+        </div>
+
+        :
+
+        <Loader />
+      }
     </div>
   );
 }

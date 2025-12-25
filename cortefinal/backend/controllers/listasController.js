@@ -1,11 +1,11 @@
 // controllers/listasController.js
 const Listas = require('../models/lista'); // Certifique-se de que o nome do modelo é 'Lista'
-const Filmes = require('../models/filme');
 
 // Função para pegar todas as listas
 const getListas = async (req, res) => {
+  const userId = req.user.id;
   try {
-    const listas = await Listas.find();
+    const listas = await Listas.find({ idDono: userId });
     res.json(listas);
   } catch (error) {
     console.error('Erro ao buscar listas:', error);
@@ -15,6 +15,7 @@ const getListas = async (req, res) => {
 
 // Função para criar uma nova lista
 const criaLista = async (req, res) => {
+    const userId = req.user.id;
     const { nome } = req.body;  // Pega o nome da lista a partir do corpo da requisição
   
     if (!nome) {
@@ -26,6 +27,7 @@ const criaLista = async (req, res) => {
       const novaLista = new Listas({
         titulo: nome,  // Usando o nome da lista
         filmes: [],  // A lista começa sem filmes
+        idDono: userId,  // Associa a lista ao usuário que a criou
       });
   
       // Salva a lista no banco de dados
@@ -44,21 +46,20 @@ const criaLista = async (req, res) => {
 const addFilmeToLista = async (req, res) => {
   try {
     const { id } = req.params;
-    const { filmeId } = req.body;
+    const { movieId, movieTitle, moviePoster } = req.body;
 
     const lista = await Listas.findById(id);
     if (!lista) {
       return res.status(404).json({ error: 'Lista não encontrada' });
     }
 
-    const filme = await Filmes.findById(filmeId);
-    if (!filme) {
-      return res.status(404).json({ error: 'Filme não encontrado' });
-    }
-
     // Adicionar o filme à lista, se não estiver já na lista
-    if (!lista.filmes.includes(filmeId)) {
-      lista.filmes.push(filmeId);
+    if (!lista.filmes.includes(movieId)) {
+      lista.filmes.push({
+        id: movieId,
+        title: movieTitle,
+        poster: moviePoster
+      });
       await lista.save();
     }
 

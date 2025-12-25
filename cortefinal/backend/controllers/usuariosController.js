@@ -1,12 +1,14 @@
 const Usuarios = require('../models/usuarios.js');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
-const getUsuario = async (req,res) => {
+const getUsuario = async (req, res) => {
     try {
         const usuarios = await Usuarios.find();
         res.json(usuarios);
     } catch (error) {
         console.error("Erro ao buscar users: ", error);
-        res.status(500).json({message: 'Erro ao buscar users'});
+        res.status(500).json({ message: 'Erro ao buscar users' });
     }
 };
 
@@ -18,10 +20,12 @@ const cadastra = async (req, res) => {
     }
 
     try {
+        const hashedPassword = await bcrypt.hash(senha, 10);
+
         const novoUser = new Usuarios({
             nome: nome,
             email: email,
-            senha: senha
+            senha: hashedPassword
         });
 
         await novoUser.save();
@@ -44,20 +48,23 @@ const verifica = async (req, res) => {
     try {
         const user = await Usuarios.findOne({ email: email });
 
-        if (user) {
-            // Verifica se a senha está correta
-            if (user.senha === senha) {
-                console.log("Usuário autenticado com sucesso!");
-                const ide = String(user._id);
-                return res.status(200).json({ success: true, message: "Login bem-sucedido", id: ide });
-            } else {
-                console.log("Usuário ou senha incorretos");
-                return res.status(401).json({ success: false, message: "Senha incorreta" });
-            }
-        } else {
-            console.log("Usuário não encontrado");
-            return res.status(404).json({ success: false, message: "Usuário não encontrado" });
+        if (!user) {
+            throw { type: 'verification', message: 'Usuário não encontrado' };
         }
+
+        const valid = await bcrypt.compare(senha, user.senha);
+
+        if (!valid) {
+            throw { type: 'verification', message: 'Login inválido' };
+        }
+
+        const token = jwt.sign(
+            { id: user.id, email: user.email },
+            process.env.JWT_SECRET,
+            { expiresIn: '24h' }
+        );
+
+        return res.status(200).json({ success: true, message: "Login bem-sucedido", token: token });
     } catch (error) {
         console.error("Erro ao verificar usuário: ", error);
         return res.status(500).json({ success: false, message: "Erro no servidor" });

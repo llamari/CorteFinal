@@ -1,14 +1,61 @@
+.home-bg {
+    background-color:rgb(3, 1, 19);
+    min-height: 100vh;
+    padding: 3rem 5rem;
+}
+
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+}
+
 .film {
-    width: 85%;
-    background-color: rgb(228, 228, 228);
-    border-radius: 30px;
-    padding: 10px;
-    margin: 3rem 7.5% 3rem 5%;
-    list-style: none;
-    box-shadow: 6px 6px 10px rgb(97, 97, 97);
+    background-color: rgb(15, 9, 48);
+    border-radius: 1rem;
+    overflow: hidden;
+    height: 100%;
+}
+
+.film:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
 }
 
 .ir{
     text-decoration: none;
     color: black;
+}
+
+#capa {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.all-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
+}
+
+#titulo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem;
+    color: rgb(231, 229, 243);
+}
+
+.info-film {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+#year, #type {
+    font-size: 1rem;
+    color: rgb(200, 198, 213);
+    margin: 0;
 }

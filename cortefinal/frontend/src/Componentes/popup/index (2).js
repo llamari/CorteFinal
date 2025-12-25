@@ -2,52 +2,79 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './style.css';
+import BatButton from '../BatButton';
 
-// Função para adicionar filme à lista
-const add = async (idLista, idFilme, setIsPopupOpen, isPopupOpen) => {
-    try {
-        const response = await axios.patch(`http://localhost:5000/api/${idLista}/adicionar`, {
-            filmeId: idFilme,
-        });
-        console.log('Filme adicionado com sucesso:', response.data);
-        setIsPopupOpen(!isPopupOpen);
-    } catch (error) {
-        console.error('Erro ao adicionar filme:', error.response ? error.response.data : error.message);
-    }
-};
 
 const Popup = () => {
     const { id } = useParams();  // ID do filme
+    const token = localStorage.getItem('token');
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [listas, setListas] = useState([]);
+    const [filmeData, setFilmeData] = useState({});
+
+    const add = async (idLista, idFilme, titleFilme, posterFilme, setIsPopupOpen, isPopupOpen) => {
+        try {
+            const response = await axios.patch(`http://localhost:5000/api/${idLista}/adicionar`, {
+                movieId: idFilme,
+                movieTitle: titleFilme,
+                moviePoster: posterFilme
+            },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+            console.log('Filme adicionado com sucesso:', response.data);
+            setIsPopupOpen(!isPopupOpen);
+        } catch (error) {
+            console.error('Erro ao adicionar filme:', error.response ? error.response.data : error.message);
+        }
+    };
+
+    const getMovie = async () => {
+        try {
+            const response = await axios.get(`https://www.omdbapi.com/?i=${id}&apikey=c183224d`);
+            console.log('Dados do filme:', response.data);
+            setFilmeData(response.data);
+        } catch (error) {
+            console.error('Erro ao buscar filme:', error.response ? error.response.data : error.message);
+        }
+    };
 
     // Função para buscar as listas
     const fetchListas = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/listas');
-            setListas(response.data);    
+            const response = await axios.get('http://localhost:5000/api/listas', {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }); // Endpoint do backend
+            setListas(response.data); // Atualiza o estado com as listas retornadas
         } catch (error) {
-            console.log('Erro ao carregar listas:', error.response ? error.response.data : error.message);
+            console.error('Erro ao buscar listas:', error);
         }
     };
 
     useEffect(() => {
+        getMovie();
         fetchListas();  // Carrega as listas quando o componente for montado
     }, []);
 
     return (
         <div>
-            <button onClick={() => setIsPopupOpen(!isPopupOpen)} className='PopUp'>Adicionar a uma lista</button>
+            <div onClick={() => setIsPopupOpen(true)}>
+            <BatButton/>
+            </div>
 
             {isPopupOpen && (
                 <div className="popup-overlay">
                     <div className="popup-content">
                         <ul>
                             {listas.map((lista) => (
-                                lista._id==='67607a7e9a92c2b898ab1e42' ?
-                                <div></div>
-                                :
-                                <button key={lista._id} onClick={() => add(lista._id, id, setIsPopupOpen, isPopupOpen)}>{lista.titulo}</button>
+                                <button key={lista._id} onClick={() => add(lista._id, id, filmeData.Title, filmeData.Poster, setIsPopupOpen, isPopupOpen)}>{lista.titulo}</button>
                             ))}
                         </ul>
                         <button onClick={() => setIsPopupOpen(false)}>Fechar</button>

@@ -1,6 +1,21 @@
 // models/Lista.js
 const mongoose = require('mongoose');
 
+const movieSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  poster: {
+    type: String,
+    required: true,
+  }
+});
+
 // Definição do Schema para Lista
 const ListaSchema = new mongoose.Schema({
   titulo: {
@@ -8,12 +23,12 @@ const ListaSchema = new mongoose.Schema({
     required: true,
   },
   filmes: [{
-    type: Number,
-    required: false,  // Filme é opcional no início
+    type: movieSchema,
+    required: false,
   }],
   idDono: {
     type: String,
-    required: false, //depois mudar para verdadeiro 
+    required: false,
   }
 });
 
