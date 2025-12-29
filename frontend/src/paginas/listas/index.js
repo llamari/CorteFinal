@@ -5,11 +5,22 @@ import './style.css';
 import { Link } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
 import Button from "../../Componentes/button";
+import NewList from "../../Componentes/newList";
 
 function Listas() {
     const token = localStorage.getItem('token');
     const [listas, setListas] = useState([]);
     const [nomeLista, setNomeLista] = useState('');  // Para controlar o input do nome da lista
+    const [visibilityPopUp, setVisibilityPopUp] = useState('hidden');
+
+    const changeVisibilityPopUp = () => {
+        console.log("mudou hein")
+        if (visibilityPopUp === 'hidden') {
+            setVisibilityPopUp('visible');
+        } else {
+            setVisibilityPopUp('hidden');
+        }
+    };
 
     // Função para buscar as listas do backend
     const fetchListas = async () => {
@@ -51,7 +62,12 @@ function Listas() {
 
     const deletaLista = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/${id}/deletar`);
+            const response = await axios.delete(`http://localhost:5000/api/${id}/deletar`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
             console.log('Lista deletada: ', response.data);
             window.location.reload(false);
         } catch (error) {
@@ -59,38 +75,35 @@ function Listas() {
         }
     }
 
-    const deletaFilme = async (idLista, idFilme) => {
+    const deletaFilme = async (e, idLista, idFilme) => {
+        e.preventDefault(); // Impede que o clique no ícone da lixeira seja propagado para o Link
         try {
-            const response = await axios.delete(`http://localhost:5000/api/${idLista}/deletar/filme/${idFilme}`);
+            const response = await axios.delete(`http://localhost:5000/api/${idLista}/deletar/filme/${idFilme}`, {
+                    headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
             console.log('Filme deletado: ', response.data);
             window.location.reload(false);
         } catch (error) {
+            window.location.reload(false);
             console.log("Erro ao deletar filme:", error);
         }
     }
 
-    const lixinho = (event) => {
-        event.stopPropagation(); // Impede que o clique no ícone da lixeira seja propagado para o Link
-    };
-
     return (
         <div id="lists-page">
+            <div className="new-list-popup" style={{ visibility: visibilityPopUp }}>
+                <NewList createNewList={criarLista} closePopUp={changeVisibilityPopUp} />
+            </div>
             <div id="page-header">
                 <h1 id="lists-title">Suas Listas:</h1>
 
-                <Button />
+                <div onClick={changeVisibilityPopUp} >
+                    <Button />
+                </div>
             </div>
-            <form onSubmit={(e) => { criarLista(nomeLista); }} id="formulario">
-                <input
-                    type="text"
-                    placeholder="Nome da lista"
-                    value={nomeLista}
-                    onChange={nome}
-                    name="nomelista"
-                    id="Nome"
-                />
-                <button type="submit" id="adiciona">Adicionar</button>
-            </form>
 
             <div id="all-lists">
                 {listas.map((lista) => (
@@ -122,8 +135,8 @@ function Listas() {
                                             <div className="title-div">
                                                 <h3 className="title">{filme.title}</h3>
                                             </div>
-                                            <div className="movie-trash-div">
-                                                <FaTrashAlt onClick={(e) => { lixinho(e); deletaFilme(lista._id, filme.id); }} className="movie-trash" />
+                                            <div className="movie-trash-div" onClick={(e) => { deletaFilme(e, lista._id, filme.id); }}>
+                                                <FaTrashAlt className="movie-trash" onClick={(e) => e.preventDefault()}/>
                                             </div>
                                         </div>
                                     </Link>

@@ -98,7 +98,7 @@ const deleteFilmeFromLista = async (req, res) => {
     }
 
     // Filtra o filme a ser removido da lista
-    lista.filmes = lista.filmes.filter(filme => filme.toString() !== filmeId);
+    lista.filmes = lista.filmes.filter(filme => filme.id !== filmeId);
 
     await lista.save();
     res.json({ message: 'Filme deletado da lista.' });

@@ -11,7 +11,7 @@
 }
 
 .film {
-    background-color: rgb(15, 9, 48);
+    background-color: #0f0930;
     border-radius: 1rem;
     overflow: hidden;
     height: 100%;
@@ -44,7 +44,7 @@
     font-size: 1.2rem;
     font-weight: 600;
     margin: 0.5rem;
-    color: rgb(231, 229, 243);
+    color: #e7e5f3;
 }
 
 .info-film {
@@ -56,6 +56,6 @@
 
 #year, #type {
     font-size: 1rem;
-    color: rgb(200, 198, 213);
+    color: #c8c6d5;
     margin: 0;
 }

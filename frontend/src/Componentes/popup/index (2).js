@@ -72,11 +72,11 @@ const Popup = () => {
             {isPopupOpen && (
                 <div className="popup-overlay">
                     <div className="popup-content">
-                        <ul>
+                        <div className='lists'>
                             {listas.map((lista) => (
                                 <button key={lista._id} onClick={() => add(lista._id, id, filmeData.Title, filmeData.Poster, setIsPopupOpen, isPopupOpen)}>{lista.titulo}</button>
                             ))}
-                        </ul>
+                        </div>
                         <button onClick={() => setIsPopupOpen(false)}>Fechar</button>
                     </div>
                 </div>
