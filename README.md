@@ -60,7 +60,7 @@ Antes de executar o projeto, certifique-se de ter instalado:
    
 ## Como Executar
 
-1. Configure as variáveis de ambiente segundo o /backend/.exemplo.env
+1. Configure as variáveis de ambiente segundo o [arquivo de exemplo](./backend/.exemplo.env).
    
 2. Inicie o backend:
    ```bash
