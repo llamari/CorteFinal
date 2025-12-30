@@ -4,6 +4,37 @@
     padding: 3rem 5rem;
 }
 
+#search-bar {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    background-color: #0f0930;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: .3rem;
+    color: #c8c6d5;
+}
+
+#search-input {
+    width: 100%;
+    height: 100%;
+    padding: 0 2.5rem 0 1rem;
+    border: none;
+    background-color: transparent;
+    color: #c8c6d5;
+    font-size: 1rem;
+    outline: none;
+}
+
+#search-icon {
+    position: absolute;
+    right: 1rem;
+    font-size: 1.2rem;
+    color: #c8c6d5;
+}
+
 .movie-list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -58,4 +89,10 @@
     font-size: 1rem;
     color: #c8c6d5;
     margin: 0;
+}
+
+#msg {
+    color: #c8c6d5;
+    width: 100%;
+
 }
