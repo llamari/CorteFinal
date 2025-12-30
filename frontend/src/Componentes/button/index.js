@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Button = () => {
     return (
         <StyledWrapper>
-            <a className="fancy" href="#">
+            <a className="fancy">
                 <span className="top-key" />
                 <span className="text">Criar Lista</span>
                 <span className="bottom-key-1" />

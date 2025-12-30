@@ -10,7 +10,6 @@ import NewList from "../../Componentes/newList";
 function Listas() {
     const token = localStorage.getItem('token');
     const [listas, setListas] = useState([]);
-    const [nomeLista, setNomeLista] = useState('');  // Para controlar o input do nome da lista
     const [visibilityPopUp, setVisibilityPopUp] = useState('hidden');
 
     const changeVisibilityPopUp = () => {
@@ -50,14 +49,9 @@ function Listas() {
                 }
             });
             console.log('Lista criada:', response);
-            setNomeLista('');
         } catch (error) {
             console.error('Erro ao criar a lista:', error.message);
         }
-    };
-
-    const nome = (e) => {
-        setNomeLista(e.target.value);
     };
 
     const deletaLista = async (id) => {

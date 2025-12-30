@@ -7,6 +7,7 @@ const dbConfig = require('./config/db');
 // const filmesRoutes = require('./routes/filmesRoutes');		
 const listasRoutes = require('./routes/listasRoutes');
 const usuariosRoutes = require('./routes/usuariosRoutes');
+const commentsRoutes = require('./routes/commentsRoutes');
 const app = express();
 const port = 5000;
 
@@ -29,6 +30,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // app.use('/', filmesRoutes);	
 app.use('/api', listasRoutes);  // Prefixo /api para todas as rotas definidas em listasRoutes
 app.use('/login', usuariosRoutes);
+app.use('/comments', commentsRoutes);
 
 // Inicia o servidor
 app.listen(port, () => {

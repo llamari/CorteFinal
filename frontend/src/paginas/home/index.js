@@ -26,29 +26,30 @@ function Home() {
     }
   };
 
-  // Função para buscar filmes do backend
-  const fetchFilmes = async () => {
-    try {
-      const response = await axios.get(`https://www.omdbapi.com/?s=batman&apikey=c183224d&type=movie&page=${page}`); // Endpoint do backend
-      if (response.data.Response) {
-        setFilmes(response.data.Search);
-        setPage(prevPage => prevPage + 1); // Incrementa a página para a próxima busca
-      }
-    } catch (error) {
-      console.error('Erro ao buscar filmes:', error);
-    }
-  };
-
-  // Busca os filmes quando o componente for montado
   useEffect(() => {
+    // Função para buscar filmes do backend
+    const fetchFilmes = async () => {
+      try {
+        const response = await axios.get(`https://www.omdbapi.com/?s=batman&apikey=c183224d&type=movie&page=${page}`); // Endpoint do backend
+        if (response.data.Response) {
+          setFilmes(response.data.Search);
+          setPage(prevPage => prevPage + 1); // Incrementa a página para a próxima busca
+        }
+      } catch (error) {
+        console.error('Erro ao buscar filmes:', error);
+      }
+    };
+
     fetchFilmes();
   }, []);
 
   useEffect(() => {
+
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          loadMore(); // mesmo papel do onEndReached
+          loadMore();
         }
       },
       { threshold: 1 }

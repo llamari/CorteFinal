@@ -33,40 +33,40 @@ const Popup = () => {
         }
     };
 
-    const getMovie = async () => {
-        try {
-            const response = await axios.get(`https://www.omdbapi.com/?i=${id}&apikey=c183224d`);
-            console.log('Dados do filme:', response.data);
-            setFilmeData(response.data);
-        } catch (error) {
-            console.error('Erro ao buscar filme:', error.response ? error.response.data : error.message);
-        }
-    };
-
-    // Função para buscar as listas
-    const fetchListas = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/api/listas', {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
-            }); // Endpoint do backend
-            setListas(response.data); // Atualiza o estado com as listas retornadas
-        } catch (error) {
-            console.error('Erro ao buscar listas:', error);
-        }
-    };
-
     useEffect(() => {
+        const getMovie = async () => {
+            try {
+                const response = await axios.get(`https://www.omdbapi.com/?i=${id}&apikey=c183224d`);
+                console.log('Dados do filme:', response.data);
+                setFilmeData(response.data);
+            } catch (error) {
+                console.error('Erro ao buscar filme:', error.response ? error.response.data : error.message);
+            }
+        };
+
+        // Função para buscar as listas
+        const fetchListas = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/api/listas', {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                }); // Endpoint do backend
+                setListas(response.data); // Atualiza o estado com as listas retornadas
+            } catch (error) {
+                console.error('Erro ao buscar listas:', error);
+            }
+        };
+
         getMovie();
-        fetchListas();  // Carrega as listas quando o componente for montado
+        fetchListas();
     }, []);
 
     return (
         <div>
             <div onClick={() => setIsPopupOpen(true)}>
-            <BatButton/>
+                <BatButton />
             </div>
 
             {isPopupOpen && (

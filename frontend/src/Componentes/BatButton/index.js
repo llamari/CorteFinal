@@ -64,7 +64,7 @@ const StyledWrapper = styled.div`
    position: absolute;
    width: 0;
    height: 100%;
-   background-color: black;
+   background-color: #0f0930;
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%);
