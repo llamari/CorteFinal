@@ -57,17 +57,19 @@ Antes de executar o projeto, certifique-se de ter instalado:
    cd ../frontend
    npm install
    ```
-
+   
 ## Como Executar
 
-1. Inicie o backend:
+1. Configure as variáveis de ambiente segundo o /backend/.exemplo.env
+   
+2. Inicie o backend:
    ```bash
    cd backend
    node index.js
    ```
    O servidor estará rodando em `http://localhost:5000` (ou a porta configurada).
 
-2. Em outro terminal, inicie o frontend:
+3. Em outro terminal, inicie o frontend:
    ```bash
    cd frontend
    npm start
@@ -79,63 +81,91 @@ Antes de executar o projeto, certifique-se de ter instalado:
 - ✅ Visualizar lista de filmes com informações básicas
 - ✅ Criar e gerenciar listas personalizadas de filmes
 - ✅ Autenticação de usuários
-- ✅ Sistema de usuários
+- ✅ Criação de resenhas e avaliações
+- ✅ Barra de pesquisa para filmes
 
 ## Estrutura do Projeto
 
 ```
 cortefinal/
+├── README.md
 ├── backend/
+│   ├── index.js
+│   ├── package.json
 │   ├── config/
 │   │   ├── cors.js
 │   │   └── db.js
 │   ├── controllers/
+│   │   ├── commentsController.js
 │   │   ├── listasController.js
 │   │   └── usuariosController.js
 │   ├── middleware/
 │   │   ├── errorHandler.js
 │   │   └── jwtMiddleware.js
 │   ├── models/
+│   │   ├── comment.js
 │   │   ├── lista.js
 │   │   └── usuarios.js
 │   ├── routes/
+│   │   ├── commentsRoutes.js
 │   │   ├── listasRoutes.js
 │   │   └── usuariosRoutes.js
-│   ├── index.js
-│   └── package.json
-├── frontend/
-│   ├── public/
-│   │   ├── index.html
-│   │   ├── manifest.json
-│   │   └── assets/
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   ├── rotas.js
-│   │   ├── assets/
-│   │   ├── Componentes/
-│   │   │   ├── BatButton/
-│   │   │   ├── button/
-│   │   │   ├── footer/
-│   │   │   ├── header/
-│   │   │   ├── loader/
-│   │   │   ├── newList/
-│   │   │   ├── pattern/
-│   │   │   └── popup/
-│   │   └── paginas/
-│   │       ├── home/
-│   │       ├── listas/
-│   │       ├── login/
-│   │       └── movies/
-│   ├── package.json
-│   └── README.md
-└── README.md
+└── frontend/
+    ├── package.json
+    ├── README.md
+    ├── public/
+    │   ├── index.html
+    │   ├── manifest.json
+    │   ├── robots.txt
+    │   └── assets/
+    └── src/
+        ├── App.js
+        ├── index.css
+        ├── index.js
+        ├── rotas.js
+        ├── assets/
+        ├── Componentes/
+        │   ├── BatButton/
+        │   │   └── index.js
+        │   ├── button/
+        │   │   └── index.js
+        │   ├── coment/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── footer/
+        │   │   ├── index.js
+        │   │   └── style.css
+        │   ├── header/
+        │   │   ├── header.js
+        │   │   └── style.css
+        │   ├── loader/
+        │   │   └── index.js
+        │   ├── newList/
+        │   │   └── index.js
+        │   ├── pattern/
+        │   │   └── index.js
+        │   ├── popup/
+        │   │   ├── index.js
+        │   │   └── style.css
+        │   └── signin/
+        │       └── index.js
+        └── paginas/
+            ├── home/
+            │   ├── index.js
+            │   └── style.css
+            ├── listas/
+            │   ├── index.js
+            │   └── style.css
+            ├── login/
+            │   ├── index.js
+            │   └── style.css
+            └── movies/
+                ├── index.js
+                └── style.css
 ```
 
 ## Futuro do Projeto
 
-- Adicionar sistema de resenhas e avaliações de filmes
-- Criar barra de pesquisa para procurar filmes
 - Melhorar a interface do usuário
 - Implementar testes automatizados
 
